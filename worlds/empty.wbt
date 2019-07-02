@@ -1,14 +1,100 @@
 #VRML_SIM R2019a utf8
 WorldInfo {
-  info [
-  ]
 }
 Viewpoint {
-  orientation -0.7 0.7 0.2 0.75
-  position 1.2 1.6 2.3
-
+  orientation -0.998128981717726 0.054203027807498465 0.028294303872592654 0.313623018592387
+  position 0.0792266493791914 0.48450548539809096 0.993922504497703
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
+}
+Floor {
+}
+Robot {
+  translation 0 0.075 0
+  children [
+    DEF BODY_GROUP Group {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+          }
+          geometry Box {
+            size 0.25 0.08 0.08
+          }
+        }
+        Transform {
+          translation 0.107 -0.0575 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+              }
+              geometry Sphere {
+                radius 0.0175
+                subdivision 2
+              }
+            }
+          ]
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+      }
+      device [
+        RotationalMotor {
+          name "motor_right"
+          maxVelocity 524
+          maxTorque 0.03
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 0 0.055
+        rotation 1 0 0 1.5708
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+            }
+            geometry Cylinder {
+              height 0.03
+              radius 0.075
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+      }
+      device [
+        RotationalMotor {
+          name "motor_left"
+          maxVelocity 524
+          maxTorque 0.03
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 0 -0.055
+        rotation 1 0 0 1.5708
+        children [
+          USE Wheel
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics Physics {
+        }
+      }
+    }
+  ]
+  boundingObject USE BODY_GROUP
+  physics Physics {
+  }
 }
