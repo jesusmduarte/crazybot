@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.998128981717726 0.054203027807498465 0.028294303872592654 0.313623018592387
-  position 0.0792266493791914 0.48450548539809096 0.993922504497703
+  orientation -0.984587238403511 -0.17021222099575004 -0.04019663912122218 0.5920236465368706
+  position 0.018948140297849553 0.3817147169530041 0.6608701192213816
 }
 TexturedBackground {
 }
@@ -42,12 +42,17 @@ Robot {
     HingeJoint {
       jointParameters HingeJointParameters {
         axis 0 0 1
+        anchor -0.05 0 0.065
       }
       device [
         RotationalMotor {
           name "motor_right"
-          maxVelocity 524
-          maxTorque 0.03
+          maxVelocity 52.35
+          maxTorque 0.59317
+        }
+        PositionSensor {
+          name "right_position_distance_sensor "
+          resolution 1
         }
       ]
       endPoint Solid {
@@ -73,12 +78,17 @@ Robot {
     HingeJoint {
       jointParameters HingeJointParameters {
         axis 0 0 1
+        anchor -0.05 0 -0.065
       }
       device [
         RotationalMotor {
           name "motor_left"
-          maxVelocity 524
-          maxTorque 0.03
+          maxVelocity 52.35
+          maxTorque 0.593
+        }
+        PositionSensor {
+          name "left_positon_sensor "
+          resolution 1
         }
       ]
       endPoint Solid {
@@ -92,6 +102,9 @@ Robot {
         physics Physics {
         }
       }
+    }
+    DistanceSensor {
+      translation 0.125 0 0
     }
   ]
   boundingObject USE BODY_GROUP
