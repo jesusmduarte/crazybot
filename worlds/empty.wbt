@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.984587238403511 -0.17021222099575004 -0.04019663912122218 0.5920236465368706
-  position 0.018948140297849553 0.3817147169530041 0.6608701192213816
+  orientation 0.7379034278651223 -0.663721804310193 -0.12235970590077457 5.84963631119246
+  position 0.21489389449621246 0.43942161129327006 0.7649820855988705
 }
 TexturedBackground {
 }
@@ -12,7 +12,8 @@ TexturedBackgroundLight {
 Floor {
 }
 Robot {
-  translation 0 0.075 0
+  translation -0.47793755816058864 0.07415306308288659 -0.7569816511603163
+  rotation 5.577767298823234e-05 0.9999999984308284 5.214845764858724e-06 2.955538495955229
   children [
     DEF BODY_GROUP Group {
       children [
@@ -41,6 +42,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position -52.36799518131739
         axis 0 0 1
         anchor -0.05 0 0.065
       }
@@ -51,13 +53,13 @@ Robot {
           maxTorque 0.59317
         }
         PositionSensor {
-          name "right_position_distance_sensor "
+          name "right_position_sensor "
           resolution 1
         }
       ]
       endPoint Solid {
         translation -0.05 0 0.055
-        rotation 1 0 0 1.5708
+        rotation 0.37492937878531646 -0.6555269322380389 -0.6555245243575882 2.4241775598148685
         children [
           DEF Wheel Shape {
             appearance PBRAppearance {
@@ -73,10 +75,13 @@ Robot {
         boundingObject USE Wheel
         physics Physics {
         }
+        linearVelocity -4.358980117785944e-16 5.73002420397643e-17 1.1443689178501561e-15
+        angularVelocity -2.0227500263254425e-15 -7.34567877981795e-16 -7.105578470144256e-16
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
+        position -41.37508859313739
         axis 0 0 1
         anchor -0.05 0 -0.065
       }
@@ -93,7 +98,7 @@ Robot {
       ]
       endPoint Solid {
         translation -0.05 0 -0.055
-        rotation 1 0 0 1.5708
+        rotation -0.19003475237546874 -0.6942227068612352 -0.6942201568435289 3.5171822818306704
         children [
           USE Wheel
         ]
@@ -101,13 +106,22 @@ Robot {
         boundingObject USE Wheel
         physics Physics {
         }
+        linearVelocity 4.3144836214304985e-16 1.9490051276605858e-16 -1.3387748278696103e-15
+        angularVelocity -1.2456023670394176e-15 -1.2330636713103117e-15 -4.1470114800762154e-16
       }
     }
     DistanceSensor {
       translation 0.125 0 0
+      lookupTable [
+        0 0.02 0
+        5 1660 0
+      ]
     }
   ]
   boundingObject USE BODY_GROUP
   physics Physics {
   }
+  controller "crazybot"
+  linearVelocity 2.486547548037275e-16 -7.007111895362718e-17 -3.7569665785756874e-16
+  angularVelocity -1.151732250419323e-15 -1.0513371463465981e-15 -9.458994099550355e-16
 }
